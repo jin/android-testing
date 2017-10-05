@@ -2,3 +2,8 @@ alias(
     name = "BasicSample",
     actual = "//BasicSample/app/src/main:BasicSample",
 )
+
+alias(
+    name = "CustomMatcherSample",
+    actual = "//CustomMatcherSample/app/src/main:CustomMatcherSample",
+)

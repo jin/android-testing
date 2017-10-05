@@ -5,4 +5,5 @@ android_binary(
     custom_package = "com.example.android.testing.espresso.BasicSample",
     resource_files = glob(["res/**/*"]),
     deps = ["//3rdparty/jvm/com/google/guava"],
+    visibility = ["//visibility:public"],
 )
