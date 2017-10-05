@@ -7,3 +7,6 @@ build
 .project
 .settings/	
 .classpath
+bazel-*
+3rdparty/
+target/

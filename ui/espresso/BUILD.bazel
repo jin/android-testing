@@ -1,0 +1,4 @@
+alias(
+    name = "BasicSample",
+    actual = "//BasicSample/app/src/main:BasicSample",
+)

@@ -1,0 +1,6 @@
+load("//3rdparty:workspace.bzl", "maven_dependencies")
+
+maven_dependencies()
+
+android_sdk_repository(name = "androidsdk")
+android_ndk_repository(name = "androidndk")

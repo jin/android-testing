@@ -1,0 +1,17 @@
+options:
+  languages: [ "java" ]
+  buildHeader:
+    -
+    # - load("@io_bazel_rules_scala//scala:scala.bzl", "scala_library")
+  resolvers:
+    - id: "mavencentral"
+      type: "default"
+      url: https://repo.maven.apache.org/maven2/
+  transitivity: runtime_deps
+  versionConflictPolicy: highest
+
+dependencies:
+  com.google.guava:
+    guava:
+      lang: java
+      version: "23.1-android"
