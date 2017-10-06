@@ -1,9 +1,9 @@
 android_binary(
     name = "BasicSample",
-    srcs = glob(["**/*.java"]),
-    manifest = "AndroidManifest.xml",
+    srcs = glob(["app/src/main/**/*.java"]),
+    manifest = "app/src/main/AndroidManifest.xml",
     custom_package = "com.example.android.testing.espresso.BasicSample",
-    resource_files = glob(["res/**/*"]),
+    resource_files = glob(["app/src/main/res/**/*"]),
     deps = ["//3rdparty/jvm/com/google/guava"],
     visibility = ["//visibility:public"],
 )

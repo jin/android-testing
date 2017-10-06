@@ -1,3 +1,4 @@
+# Use johnynek/bazel-deps to generate Maven dependencies
 load("//3rdparty:workspace.bzl", "maven_dependencies")
 
 maven_dependencies()
