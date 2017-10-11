@@ -1,9 +1,43 @@
-android_binary(
-    name = "BasicSample",
+android_library(
+    name = "BasicSampleLib",
     srcs = glob(["app/src/main/**/*.java"]),
-    manifest = "app/src/main/AndroidManifest.xml",
+    manifest = "app/src/main/EmptyAndroidManifest.xml",
     custom_package = "com.example.android.testing.espresso.BasicSample",
     resource_files = glob(["app/src/main/res/**/*"]),
     deps = ["//3rdparty/jvm/com/google/guava"],
+)
+
+android_binary(
+    name = "BasicSample",
+    srcs = glob(["app/src/main/**/*.java"]),
+    custom_package = "com.example.android.testing.espresso.BasicSample",
+    manifest = "app/src/main/AndroidManifest.xml",
+    deps = [":BasicSampleLib", "//3rdparty/jvm/com/google/guava"],
+    resource_files = glob(["app/src/main/res/**/*"]),
+    visibility = ["//visibility:public"],
+)
+
+android_library(
+    name = "BasicSampleTestLib",
+    srcs = glob(["app/src/androidTest/**/*.java"]),
+    custom_package = "com.example.android.testing.espresso.BasicSample.test",
+    manifest = "app/src/androidTest/EmptyAndroidManifest.xml",
+    deps = [
+      ":BasicSampleLib",
+      "//3rdparty/jvm/org/hamcrest:hamcrest_core",
+      "//3rdparty/jvm/junit",
+      "//3rdparty/jvm/com/android/support:support_annotations",
+      "@com_android_support_test_runner//aar",
+      "@com_android_support_test_rules//aar",
+      "@com_android_support_test_espresso_espresso_core//aar",
+    ],
+)
+
+android_binary(
+    name = "BasicSampleTest",
+    instruments = ":BasicSample",
+    manifest = "app/src/androidTest/AndroidManifest.xml",
+    custom_package = "com.example.android.testing.espresso.BasicSample.test",
+    deps = [":BasicSampleTestLib"],
     visibility = ["//visibility:public"],
 )

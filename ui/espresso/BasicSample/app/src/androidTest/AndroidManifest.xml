@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.example.android.testing.espresso.BasicSample.test"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="19" />
+
+    <instrumentation android:targetPackage="com.example.android.testing.espresso.BasicSample"
+                     android:name="android.support.test.runner.AndroidJUnitRunner"/>
+
+    <application android:label="BasicSampleTest">
+      <uses-library android:name="com.android.support.test" />
+      <uses-library android:name="com.android.support.espresso" />
+      <uses-library android:name="com.android.support" />
+    </application>
+</manifest>
