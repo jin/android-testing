@@ -9,8 +9,8 @@
                      android:name="android.support.test.runner.AndroidJUnitRunner"/>
 
     <application android:label="BasicSampleTest">
-      <uses-library android:name="com.android.support.test" />
-      <uses-library android:name="com.android.support.espresso" />
-      <uses-library android:name="com.android.support" />
+      <!-- <uses-library android:name="com.android.support.test" /> -->
+      <!-- <uses-library android:name="com.android.support.espresso" /> -->
+      <!-- <uses-library android:name="com.android.support" /> -->
     </application>
 </manifest>

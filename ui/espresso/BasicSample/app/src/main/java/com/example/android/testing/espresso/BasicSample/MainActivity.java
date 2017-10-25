@@ -54,13 +54,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
         // Get the text from the EditText view.
         final String text = mEditText.getText().toString();
 
-        final int foo = R.id.changeTextBt;
-        final int bar = R.id.activityChangeTextBtn;
+        final int changeTextBtId = R.id.changeTextBt;
+        final int activityChangeTextBtnId = R.id.activityChangeTextBtn;
 
-        if (view.getId() == foo) {
+        // switch(view.getId()) {
+        //   case changeTextBtId:
+        //     // First button's interaction: set a text in a text view.
+        //     mTextView.setText(text);
+        //     break;
+        //   case activityChangeTextBtnId:
+        //     // Second button's interaction: start an activity and send a message to it.
+        //     Intent intent = ShowTextActivity.newStartIntent(this, text);
+        //     startActivity(intent);
+        //     break;
+        // }
+
+        if (view.getId() == changeTextBtId) {
           // First button's interaction: set a text in a text view.
           mTextView.setText(text);
-        } else if (view.getId() == bar) {
+        } else if (view.getId() == activityChangeTextBtnId) {
           // Second button's interaction: start an activity and send a message to it.
           Intent intent = ShowTextActivity.newStartIntent(this, text);
           startActivity(intent);

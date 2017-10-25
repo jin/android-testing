@@ -12,8 +12,11 @@ android_binary(
     srcs = glob(["app/src/main/**/*.java"]),
     custom_package = "com.example.android.testing.espresso.BasicSample",
     manifest = "app/src/main/AndroidManifest.xml",
-    deps = [":BasicSampleLib", "//3rdparty/jvm/com/google/guava"],
-    resource_files = glob(["app/src/main/res/**/*"]),
+    deps = [
+      ":BasicSampleLib",
+      "//3rdparty/jvm/com/google/guava"
+    ],
+    # resource_files = glob(["app/src/main/res/**/*"]),
     visibility = ["//visibility:public"],
 )
 
@@ -22,14 +25,19 @@ android_library(
     srcs = glob(["app/src/androidTest/**/*.java"]),
     custom_package = "com.example.android.testing.espresso.BasicSample.test",
     manifest = "app/src/androidTest/EmptyAndroidManifest.xml",
+    resource_files = glob(["app/src/main/res/**/*"]),
     deps = [
       ":BasicSampleLib",
-      "//3rdparty/jvm/org/hamcrest:hamcrest_core",
+      # "//3rdparty/jvm/org/hamcrest:hamcrest_library",
+      # "//3rdparty/jvm/org/hamcrest:hamcrest_core",
+      "//3rdparty/jvm/org/hamcrest:java_hamcrest",
       "//3rdparty/jvm/junit",
       "//3rdparty/jvm/com/android/support:support_annotations",
+      "//3rdparty/jvm/com/google/inject:guice",
       "@com_android_support_test_runner//aar",
       "@com_android_support_test_rules//aar",
       "@com_android_support_test_espresso_espresso_core//aar",
+      "@com_android_support_test_espresso_espresso_idling_resource//aar",
     ],
 )
 
@@ -40,4 +48,11 @@ android_binary(
     custom_package = "com.example.android.testing.espresso.BasicSample.test",
     deps = [":BasicSampleTestLib"],
     visibility = ["//visibility:public"],
+)
+
+android_instrumentation_test(
+    name = "BasicSampleInstrumentationTest",
+    instrumentation = ":BasicSampleTest",
+    target_device = "@android_test_support//tools/android/emulated_devices/pixel_c:android_24_x86_qemu2",
+    # target_device = "@android_test_support//tools/android/emulated_devices/pixel:google_25_x86_qemu2",
 )
