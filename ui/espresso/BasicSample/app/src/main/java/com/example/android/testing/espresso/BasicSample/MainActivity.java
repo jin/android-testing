@@ -19,6 +19,7 @@ package com.example.android.testing.espresso.BasicSample;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -47,6 +48,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         mTextView = (TextView) findViewById(R.id.textToBeChanged);
         mEditText = (EditText) findViewById(R.id.editTextUserInput);
+        Log.i("textToBeChangedIdApp", new Integer(R.id.textToBeChanged).toString());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("debug", "onResume");
+        mEditText.clearFocus();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // throw new RuntimeException("break");
     }
 
     @Override
@@ -56,6 +71,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         final int changeTextBtId = R.id.changeTextBt;
         final int activityChangeTextBtnId = R.id.activityChangeTextBtn;
+
+        Log.i("view_id", new Integer(view.getId()).toString());
+        Log.i("changeTextBtId", new Integer(changeTextBtId).toString());
+        Log.i("activityChangeTextBtnId", new Integer(activityChangeTextBtnId).toString());
 
         // switch(view.getId()) {
         //   case changeTextBtId:
@@ -74,7 +93,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
           mTextView.setText(text);
         } else if (view.getId() == activityChangeTextBtnId) {
           // Second button's interaction: start an activity and send a message to it.
-          Intent intent = ShowTextActivity.newStartIntent(this, text);
+          Intent intent = com.example.android.testing.espresso.BasicSample.ShowTextActivity
+              .newStartIntent(this, text);
           startActivity(intent);
         }
     }

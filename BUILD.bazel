@@ -1,9 +1,0 @@
-alias(
-    name = "BasicSample",
-    actual = "//ui/espresso/BasicSample",
-)
-
-alias(
-    name = "CustomMatcherSample",
-    actual = "//ui/espresso/CustomMatcherSample",
-)

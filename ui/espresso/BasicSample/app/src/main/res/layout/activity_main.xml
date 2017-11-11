@@ -39,6 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:hint="@string/type_something"/>
 
     <Button
@@ -47,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/change_text"
+            android:clickable="true"
             android:layout_gravity="center_horizontal"/>
 
 
@@ -56,5 +59,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:clickable="true"
             android:text="@string/open_activity_and_change_text"/>
 </LinearLayout>

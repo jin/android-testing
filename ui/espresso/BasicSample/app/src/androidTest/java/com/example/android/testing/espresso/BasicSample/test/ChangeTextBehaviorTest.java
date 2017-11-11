@@ -16,6 +16,9 @@
 
 package com.example.android.testing.espresso.BasicSample.test;
 
+import android.support.test.espresso.Espresso;
+import android.util.Log;
+import android.widget.EditText;
 import com.example.android.testing.espresso.BasicSample.MainActivity;
 
 import org.junit.Before;
@@ -34,6 +37,7 @@ import android.test.ActivityInstrumentationTestCase2;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -77,7 +81,7 @@ public class ChangeTextBehaviorTest {
         onView(withId(R.id.editTextUserInput))
                 .perform(typeText(STRING_TO_BE_TYPED), closeSoftKeyboard());
         onView(withId(R.id.changeTextBt)).perform(click());
-
+        Log.i("changeTextBt", new Integer(R.id.changeTextBt).toString());
         // Check that the text was changed.
         onView(withId(R.id.textToBeChanged)).check(matches(withText(STRING_TO_BE_TYPED)));
     }
@@ -88,7 +92,7 @@ public class ChangeTextBehaviorTest {
     //     onView(withId(R.id.editTextUserInput)).perform(typeText(STRING_TO_BE_TYPED),
     //             closeSoftKeyboard());
     //     onView(withId(R.id.activityChangeTextBtn)).perform(click());
-
+    //
     //     // This view is in a different Activity, no need to tell Espresso.
     //     onView(withId(R.id.show_text_view)).check(matches(withText(STRING_TO_BE_TYPED)));
     // }
