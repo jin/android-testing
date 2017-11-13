@@ -5,7 +5,7 @@ android_library(
     manifest = "app/src/main/EmptyAndroidManifest.xml",
     resource_files = glob(["app/src/main/res/**/*"]),
     deps = [
-        "//3rdparty/jvm/com/google/guava",
+        "@com_google_guava_guava//jar",
     ],
 )
 
@@ -16,7 +16,7 @@ android_binary(
     manifest = "app/src/main/AndroidManifest.xml",
     deps = [
         ":BasicSampleLib",
-        "//3rdparty/jvm/com/google/guava",
+        "@com_google_guava_guava//jar",
     ],
 )
 
@@ -27,10 +27,11 @@ android_library(
     manifest = "app/src/androidTest/EmptyAndroidManifest.xml",
     deps = [
         ":BasicSampleLib",
-        "//3rdparty/jvm/com/android/support:support_annotations",
-        "//3rdparty/jvm/com/google/inject:guice",
-        "//3rdparty/jvm/junit",
-        "//3rdparty/jvm/org/hamcrest:java_hamcrest",
+	"@com_android_support_support_annotations//jar",
+	"@com_google_inject_guice//jar",
+	"@javax_inject_javax_inject//jar",
+	"@junit_junit//jar",
+	"@org_hamcrest_java_hamcrest//jar",
         "@com_android_support_test_espresso_espresso_core//aar",
         "@com_android_support_test_espresso_espresso_idling_resource//aar",
         "@com_android_support_test_rules//aar",
