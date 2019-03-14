@@ -9,6 +9,8 @@ android_sdk_repository(
     # path = "/path/to/sdk",
 )
 
+android_ndk_repository(name = "androidndk")
+
 # Android Test Support
 #
 # This repository contains the supporting tools to run Android instrumentation tests,
@@ -16,7 +18,6 @@ android_sdk_repository(
 ATS_TAG = "androidx-test-1.1.1-alpha01"
 
 ATS_SHA256 = "f7e967cb471bc279fda564084e965868d96e6c608fa27e26cf4330ae29cd603e"
-
 
 http_archive(
     name = "android_test_support",
@@ -37,8 +38,8 @@ RULES_JVM_EXTERNAL_SHA = "ade316ec98ba0769bb1189b345d9877de99dd1b1e82f5a649d6ccb
 
 http_archive(
     name = "rules_jvm_external",
-    strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
     sha256 = RULES_JVM_EXTERNAL_SHA,
+    strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
     url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
 )
 
@@ -46,21 +47,22 @@ http_archive(
 # TODO(jin): remove this when android/android-test no longer depends on gmaven_rules.
 http_archive(
     name = "gmaven_rules",
-    strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
     sha256 = RULES_JVM_EXTERNAL_SHA,
+    strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
     url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
 )
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
-load("//:common_defs.bzl",
-     "androidxLibVersion",
-     "coreVersion",
-     "espressoVersion",
-     "extJUnitVersion",
-     "extTruthVersion",
-     "rulesVersion",
-     "runnerVersion",
-     "uiAutomatorVersion",
+load(
+    "//:common_defs.bzl",
+    "androidxLibVersion",
+    "coreVersion",
+    "espressoVersion",
+    "extJUnitVersion",
+    "extTruthVersion",
+    "rulesVersion",
+    "runnerVersion",
+    "uiAutomatorVersion",
 )
 
 maven_install(
@@ -92,3 +94,20 @@ maven_install(
         "https://repo1.maven.org/maven2",
     ],
 )
+
+local_repository(
+    name = "bazel_toolchains",
+    path = "/usr/local/google/home/jingwen/code/bazel-toolchains",
+)
+
+# http_archive(
+#     name = "bazel_toolchains",
+#     sha256 = "4b1468b254a572dbe134cc1fd7c6eab1618a72acd339749ea343bd8f55c3b7eb",
+#     strip_prefix = "bazel-toolchains-d665ccfa3e9c90fa789671bf4ef5f7c19c5715c4",
+#     urls = [
+#         "https://mirror.bazel.build/github.com/bazelbuild/bazel-toolchains/archive/d665ccfa3e9c90fa789671bf4ef5f7c19c5715c4.tar.gz",
+#         "https://github.com/bazelbuild/bazel-toolchains/archive/d665ccfa3e9c90fa789671bf4ef5f7c19c5715c4.tar.gz",
+#     ],
+# )
+
+register_execution_platforms(":android_platform")
