@@ -21,3 +21,27 @@ android_library(
         artifact("org.hamcrest:java-hamcrest"),
     ],
 )
+
+platform(
+    name = "android_platform",
+    constraint_values = [
+        "@bazel_tools//platforms:x86_64",
+        "@bazel_tools//platforms:linux",
+        "@bazel_toolchains//constraints:xenial",
+        "@bazel_tools//tools/cpp:clang",
+    ],
+    remote_execution_properties = """
+      properties: {
+        name: "container-image"
+        value: "docker://gcr.io/di-cloud-exp/rbe-ubuntu16-04-android@sha256:4f4ad9bc6d49c8c1bbf39b94e5296398abd81e4b5bad06b81ab340328e6d10d5"
+      }
+      properties: {
+        name: "dockerNetwork"
+        value: "standard"
+      }
+      properties: {
+        name: "dockerPrivileged"
+        value: "true"
+      }
+    """,
+)
