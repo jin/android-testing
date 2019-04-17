@@ -3,13 +3,14 @@ load("@bazel_tools//tools/build_defs/repo:jvm.bzl", "jvm_maven_import_external")
 
 # Set the path to your local SDK installation, or use the ANDROID_HOME environment variable.
 android_sdk_repository(
-    name = "androidsdk",
-    api_level = 28,
-    build_tools_version = "28.0.2",
-    # path = "/path/to/sdk",
+    name="androidsdk",
+    api_level=28,
+    build_tools_version="28.0.2",
 )
 
-android_ndk_repository(name = "androidndk")
+android_ndk_repository(
+    name="androidndk"
+)
 
 # Android Test Support
 #
@@ -32,14 +33,13 @@ android_test_repositories()
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-RULES_JVM_EXTERNAL_TAG = "1.1"
-
-RULES_JVM_EXTERNAL_SHA = "ade316ec98ba0769bb1189b345d9877de99dd1b1e82f5a649d6ccbcb8da51c1f"
+RULES_JVM_EXTERNAL_TAG = "1.2"
+RULES_JVM_EXTERNAL_SHA = "e5c68b87f750309a79f59c2b69ead5c3221ffa54ff9496306937bfa1c9c8c86b"
 
 http_archive(
     name = "rules_jvm_external",
-    sha256 = RULES_JVM_EXTERNAL_SHA,
     strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
+    sha256 = RULES_JVM_EXTERNAL_SHA,
     url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
 )
 
