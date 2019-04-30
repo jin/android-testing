@@ -32,7 +32,6 @@ load("@android_test_support//:repo.bzl", "android_test_repositories")
 android_test_repositories()
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
 RULES_JVM_EXTERNAL_TAG = "1.2"
 RULES_JVM_EXTERNAL_SHA = "e5c68b87f750309a79f59c2b69ead5c3221ffa54ff9496306937bfa1c9c8c86b"
 
@@ -42,7 +41,6 @@ http_archive(
     sha256 = RULES_JVM_EXTERNAL_SHA,
     url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
 )
-
 # Keeping a copy of gmaven_rules around so dependencies can use it
 # TODO(jin): remove this when android/android-test no longer depends on gmaven_rules.
 http_archive(
