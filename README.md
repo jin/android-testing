@@ -11,6 +11,8 @@ A collection of samples demonstrating different frameworks and techniques for au
 
 **[DataAdapterSample](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/DataAdapterSample)** - Showcases the `onData()` entry point for Espresso, for lists and AdapterViews
 
+**[FragmentScenarioSample](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/FragmentScenarioSample)** - Basic usage of `FragmentScenario` with Espresso. 
+
 **[IdlingResourceSample](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/IdlingResourceSample)** - Synchronization with background jobs
 
 **[IntentsBasicSample](https://github.com/googlesamples/android-testing/blob/master/ui/espresso/IntentsBasicSample)** - Basic usage of `intended()` and `intending()`
@@ -47,9 +49,8 @@ A collection of samples demonstrating different frameworks and techniques for au
 Prerequisites
 --------------
 
-- Android SDK v23
-- Android Build Tools v23
-- Android Support Repository rev17
+- Android SDK v28
+- Android Build Tools v28.03
 
 Getting Started
 ---------------
@@ -61,9 +62,9 @@ These samples use the Gradle build system. To build a project, enter the project
 
 There is a top-level `build.gradle` file if you want to build and test all samples from the root directory. This is mostly helpful to build on a CI (Continuous Integration) server.
 
-Android Testing Support Library
+AndroidX Test Library
 ---------------
-Many of these samples use the ATSL. Visit the [Android Testing Support Library site](https://google.github.io/android-testing-support-library/) for more information.
+Many of these samples use the AndroidX Test Library. Visit the [Testing site on developer.android.com](https://developer.android.com/training/testing) for more information.
 
 Experimental Bazel Support
 --------------------------
