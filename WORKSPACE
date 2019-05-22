@@ -16,9 +16,9 @@ android_ndk_repository(
 #
 # This repository contains the supporting tools to run Android instrumentation tests,
 # like the emulator definitions (android_device) and the device broker/test runner.
-ATS_TAG = "androidx-test-1.1.1-alpha01"
+ATS_TAG = "androidx-test-1.2.0-beta01"
 
-ATS_SHA256 = "f7e967cb471bc279fda564084e965868d96e6c608fa27e26cf4330ae29cd603e"
+ATS_SHA256 = "a9d50157684920a0d23637bba3d26d3e55017c834ea7ecda01908b8511470373"
 
 http_archive(
     name = "android_test_support",
@@ -32,8 +32,9 @@ load("@android_test_support//:repo.bzl", "android_test_repositories")
 android_test_repositories()
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-RULES_JVM_EXTERNAL_TAG = "1.2"
-RULES_JVM_EXTERNAL_SHA = "e5c68b87f750309a79f59c2b69ead5c3221ffa54ff9496306937bfa1c9c8c86b"
+
+RULES_JVM_EXTERNAL_TAG = "2.1"
+RULES_JVM_EXTERNAL_SHA = "515ee5265387b88e4547b34a57393d2bcb1101314bcc5360ec7a482792556f42"
 
 http_archive(
     name = "rules_jvm_external",
@@ -41,26 +42,18 @@ http_archive(
     sha256 = RULES_JVM_EXTERNAL_SHA,
     url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
 )
-# Keeping a copy of gmaven_rules around so dependencies can use it
-# TODO(jin): remove this when android/android-test no longer depends on gmaven_rules.
-http_archive(
-    name = "gmaven_rules",
-    sha256 = RULES_JVM_EXTERNAL_SHA,
-    strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
-    url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
-)
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
-load(
-    "//:common_defs.bzl",
-    "androidxLibVersion",
-    "coreVersion",
-    "espressoVersion",
-    "extJUnitVersion",
-    "extTruthVersion",
-    "rulesVersion",
-    "runnerVersion",
-    "uiAutomatorVersion",
+load("@rules_jvm_external//:specs.bzl", "maven")
+load("//:common_defs.bzl",
+     "androidxLibVersion",
+     "coreVersion",
+     "espressoVersion",
+     "extJUnitVersion",
+     "extTruthVersion",
+     "rulesVersion",
+     "runnerVersion",
+     "uiAutomatorVersion",
 )
 
 maven_install(
@@ -80,10 +73,17 @@ maven_install(
         "androidx.test:rules:" + rulesVersion,
         "androidx.test:runner:" + runnerVersion,
         "androidx.test.uiautomator:uiautomator:" + uiAutomatorVersion,
-        "com.google.inject:guice:4.0",
+        maven.artifact("com.google.inject", "guice", "4.0", neverlink = True),
         "junit:junit:4.12",
         "javax.inject:javax.inject:1",
         "org.hamcrest:java-hamcrest:2.0.0.0",
+        maven.artifact(
+            "org.robolectric",
+            "robolectric",
+            "4.3-beta-1",
+            neverlink = True,
+            exclusions = ["com.google.guava:guava"],
+        ),
         "com.google.guava:guava:26.0-android",
         "com.google.truth:truth:0.42",
     ],
