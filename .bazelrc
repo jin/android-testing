@@ -15,8 +15,6 @@ test:local_device --test_arg=--device_broker_type=LOCAL_ADB_SERVER
 # Uncomment and set $device_id if there is more than one connected device.
 # test:local_device --test_arg=--device_serial_number=$device_id
 
-# test --flaky_test_attempts=3
-
 # -----------------
 # RBE configuration
 # -----------------
@@ -154,3 +152,9 @@ build:remote_android --platforms=:android_platform
 
 build:docker-sandbox --experimental_docker_image=gcr.io/di-cloud-exp/rbe-ubuntu16-04-android:latest
 build:docker-sandbox --experimental_docker_privileged
+
+test --flaky_test_attempts=3
+
+# The unified launcher runs in Python 2 host configuration
+# https://github.com/bazelbuild/bazel/issues/7899
+build --host_force_python=PY2 

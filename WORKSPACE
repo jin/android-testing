@@ -16,9 +16,9 @@ android_ndk_repository(
 #
 # This repository contains the supporting tools to run Android instrumentation tests,
 # like the emulator definitions (android_device) and the device broker/test runner.
-ATS_TAG = "androidx-test-1.2.0-beta01"
+ATS_TAG = "1edfdab3134a7f01b37afabd3eebfd2c5bb05151"
 
-ATS_SHA256 = "a9d50157684920a0d23637bba3d26d3e55017c834ea7ecda01908b8511470373"
+ATS_SHA256 = "dcd1ff76aef1a26329d77863972780c8fe1fc8ff625747342239f0489c2837ec"
 
 http_archive(
     name = "android_test_support",
