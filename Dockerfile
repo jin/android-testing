@@ -9,7 +9,9 @@ RUN yes | apt-get install -y \
   libgl1-mesa-glx \
   libpulse-dev \
   qemu-kvm \
-  lsof
+  libxcomposite1 \
+  lsof \
+  libxcursor1
 
 # 32-bit dexdump_annotations system dependencies. Required by the android_instrumentation_test runner.
 # ldd /tmp/dexdump_annotations

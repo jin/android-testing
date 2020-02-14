@@ -30,24 +30,10 @@ platform(
         "@bazel_toolchains//constraints:xenial",
         "@bazel_tools//tools/cpp:clang",
     ],
-    # remote_execution_properties = """
-    #   properties: {
-    #     name: "container-image"
-    #     value: "docker://gcr.io/di-cloud-exp/rbe-ubuntu16-04-android@sha256:4f4ad9bc6d49c8c1bbf39b94e5296398abd81e4b5bad06b81ab340328e6d10d5"
-    #   }
-    #   properties: {
-    #     name: "dockerNetwork"
-    #     value: "standard"
-    #   }
-    #   properties: {
-    #     name: "dockerPrivileged"
-    #     value: "true"
-    #   }
-    # """,
     remote_execution_properties = """
       properties: {
         name: "container-image"
-        value: "docker://gcr.io/rbe-containers/ubuntu16_04-android_test@sha256:d3b597160b72cd39f4f0635f387d82afcaac4f2692daa4d64b895b7887b86fd6"
+        value: "docker://gcr.io/di-cloud-exp/rbe-ubuntu16-04-android@sha256:8511fb519f9c0c8307979450b0d8b0e5c972fead9c5718ddb788817a2e551173"
       }
       properties: {
         name: "dockerNetwork"
@@ -58,4 +44,19 @@ platform(
         value: "true"
       }
     """,
+    # TODO(@jin): switch to official rbe-containers when container with libxcursor1 and libxcomposite1 is ready.
+    # remote_execution_properties = """
+    #   properties: {
+    #     name: "container-image"
+    #     value: "docker://gcr.io/rbe-containers/ubuntu16_04-android_test@sha256:d3b597160b72cd39f4f0635f387d82afcaac4f2692daa4d64b895b7887b86fd6"
+    #   }
+    #   properties: {
+    #     name: "dockerNetwork"
+    #     value: "standard"
+    #   }
+    #   properties: {
+    #     name: "dockerPrivileged"
+    #     value: "true"
+    #   }
+    # """,
 )

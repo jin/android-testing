@@ -93,19 +93,14 @@ maven_install(
     ],
 )
 
-local_repository(
+http_archive(
     name = "bazel_toolchains",
-    path = "/usr/local/google/home/jingwen/code/bazel-toolchains",
+    sha256 = "4d348abfaddbcee0c077fc51bb1177065c3663191588ab3d958f027cbfe1818b",
+    strip_prefix = "bazel-toolchains-2.1.0",
+    urls = [
+        "https://github.com/bazelbuild/bazel-toolchains/releases/download/2.1.0/bazel-toolchains-2.1.0.tar.gz",
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-toolchains/archive/2.1.0.tar.gz",
+    ],
 )
-
-# http_archive(
-#     name = "bazel_toolchains",
-#     sha256 = "4b1468b254a572dbe134cc1fd7c6eab1618a72acd339749ea343bd8f55c3b7eb",
-#     strip_prefix = "bazel-toolchains-d665ccfa3e9c90fa789671bf4ef5f7c19c5715c4",
-#     urls = [
-#         "https://mirror.bazel.build/github.com/bazelbuild/bazel-toolchains/archive/d665ccfa3e9c90fa789671bf4ef5f7c19c5715c4.tar.gz",
-#         "https://github.com/bazelbuild/bazel-toolchains/archive/d665ccfa3e9c90fa789671bf4ef5f7c19c5715c4.tar.gz",
-#     ],
-# )
 
 register_execution_platforms(":android_platform")
